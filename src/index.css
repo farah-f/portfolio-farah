@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+/* Active les classes dark: de Tailwind avec la classe .dark */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-bg: #fdf7f5;
+  --color-surface: #ffffff;
+  --color-night: #2d2230;
+  --color-ink: #2d2230;
+  --color-muted: #86737f;
+  --color-line: #eddfe2;
+  --color-brand: #b94e72;
+  --color-brand-soft: #fbebf0;
+  --color-brand-2: #a78bdb;
+
+  --font-sans: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* Valeurs du mode nuit */
+.dark {
+  color-scheme: dark;
+  --color-bg: #17111a;
+  --color-surface: #221829;
+  --color-night: #0f0a12;
+  --color-ink: #f4eaf0;
+  --color-muted: #a8949f;
+  --color-line: #3a2c3f;
+  --color-brand: #d36b90;
+  --color-brand-soft: #35212f;
+  --color-brand-2: #b39ce6;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.aurora {
+  background:
+    radial-gradient(520px circle at 85% 20%, color-mix(in srgb, var(--color-brand) 14%, transparent), transparent 70%),
+    radial-gradient(420px circle at 10% 80%, color-mix(in srgb, var(--color-brand-2) 12%, transparent), transparent 70%),
+    var(--color-bg);
+}
+
+.text-gradient {
+  background: linear-gradient(90deg, var(--color-brand), var(--color-brand-2));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Rattrapage mode nuit pour les classes écrites en dur */
+.dark .bg-white { background-color: var(--color-surface); }
+.dark .bg-ink { background-color: var(--color-night); }
+.dark .border-white { border-color: var(--color-surface); }
+.dark .bg-white\/80 { background-color: color-mix(in srgb, var(--color-surface) 80%, transparent); }
+
+/* Bouton évolutif (Growing Back-to-Top) */
+.back-to-top-growing {
+  position: fixed;
+  bottom: 35px;
+  right: 35px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--color-surface);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--color-line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.15s ease-out, border-color 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08),
+              0 0 12px color-mix(in srgb, var(--color-brand) 15%, transparent);
+}
+
+.dark .back-to-top-growing {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4),
+              0 0 15px color-mix(in srgb, var(--color-brand) 25%, transparent);
+}
+
+/* État visible */
+.back-to-top-growing.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Hover : Légère lueur supplémentaire et agrandissement au survol */
+.back-to-top-growing:hover {
+  border-color: var(--color-brand);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2),
+              0 0 20px color-mix(in srgb, var(--color-brand) 40%, transparent);
+}
+
+/* SVG Position */
+.back-to-top-growing .progress-ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(-90deg);
+  pointer-events: none;
+}
+
+.back-to-top-growing .progress-ring__circle {
+  transition: stroke-dashoffset 0.1s linear;
+}
+
+/* Contenu du centre */
+.back-to-top-growing .btn-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+  z-index: 2;
+}
+
+.back-to-top-growing .arrow-small {
+  color: var(--color-brand);
+  transition: transform 0.2s ease;
+}
+
+.back-to-top-growing:hover .arrow-small {
+  transform: translateY(-2px);
+}
+
+.back-to-top-growing .percent-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-ink);
+  line-height: 1;
+}

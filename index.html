@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Évite le flash blanc : applique le mode nuit avant React -->
+    <script>
+      (function () {
+        try {
+          var saved = localStorage.getItem("theme");
+          var dark = saved
+            ? saved === "dark"
+            : window.matchMedia("(prefers-color-scheme: dark)").matches;
+          if (dark) document.documentElement.classList.add("dark");
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- Titre et description (onglet + Google) -->
+    <title>Farah Faggaa | Ingénieure Full-Stack Java, Spring Boot, Angular</title>
+    <meta
+      name="description"
+      content="Portfolio de Farah Faggaa, ingénieure en génie logiciel Full-Stack : Java, Spring Boot, Angular, React. Disponible pour un poste ou une mission."
+    />
+    <meta name="author" content="Farah Faggaa" />
+
+    <!-- Favicon + couleur de la barre du navigateur mobile -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#b94e72" />
+
+    <!-- Aperçu LinkedIn / Facebook / WhatsApp (Open Graph) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="fr_FR" />
+    <meta property="og:site_name" content="Farah Faggaa" />
+    <meta property="og:title" content="Farah Faggaa | Ingénieure Full-Stack" />
+    <meta
+      property="og:description"
+      content="Java, Spring Boot, Angular, React. Du besoin à la validation : des applications complètes et testées."
+    />
+    <meta property="og:url" content="https://TON-SITE.vercel.app/" />
+    <meta property="og:image" content="https://TON-SITE.vercel.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Aperçu X / Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Farah Faggaa | Ingénieure Full-Stack" />
+    <meta
+      name="twitter:description"
+      content="Java, Spring Boot, Angular, React. Disponible pour un poste ou une mission."
+    />
+    <meta name="twitter:image" content="https://TON-SITE.vercel.app/og-image.png" />
+
+    <!-- Polices -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
