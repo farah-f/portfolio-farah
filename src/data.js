@@ -80,7 +80,8 @@ export const experiences = [
     company: "Global Commerce Tunisie",
     place: "Sahline, Tunisie",
     type: "Poste actuel",
-    period: "Depuis janvier 2026",
+    start: "2026-01-13",
+    end: null,
     current: true,
     summary:
       "Conception, développement et déploiement d'une plateforme web vitrine, avec optimisation de la performance digitale.",
@@ -100,7 +101,8 @@ export const experiences = [
     company: "Insy2s",
     place: "France",
     type: "Stage",
-    period: "Janv. – Juin 2024",
+    start: "2024-01-29",
+    end: "2024-06-14",
     summary:
       "Conception d'un module de workflow générique « InsyProcess » avec moteur de règles pour automatiser les processus métier.",
     bullets: [
@@ -117,7 +119,8 @@ export const experiences = [
     company: "ISatisfy",
     place: "Bois-Colombes, France",
     type: "Stage",
-    period: "Août – Sept. 2023",
+    start: "2023-08-14",
+    end: "2023-09-15",
     summary:
       "Conception et développement d'une application web de gestion des ressources humaines.",
     bullets: [
@@ -135,7 +138,8 @@ export const experiences = [
     company: "WIMOVA",
     place: "Lyon, France",
     type: "Stage",
-    period: "Juin – Sept. 2022",
+    start: "2022-06-20",
+    end: "2022-09-19",
     summary:
       "Développement back et front sur une plateforme de missionnement électronique : nouveau module « Espace Client ».",
     bullets: [
@@ -152,7 +156,8 @@ export const experiences = [
     company: "IOT Medical Technology",
     place: "Tunisie",
     type: "Stage",
-    period: "Janv. – Juin 2021",
+    start: "2021-01-10",
+    end: "2021-06-11",
     summary:
       "Acquisition et visualisation de données médicales en temps réel avec Raspberry Pi.",
     bullets: [
@@ -168,7 +173,8 @@ export const experiences = [
     company: "Vortex",
     place: "Sousse, Tunisie",
     type: "Stage",
-    period: "Juil. – Août 2020",
+    start: "2020-07-03",
+    end: "2020-08-05",
     summary:
       "Découverte du développement d'un module sur une application e-commerce Prestashop.",
     bullets: [

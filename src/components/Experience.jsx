@@ -6,15 +6,27 @@ import { useLang } from "../i18n/LanguageContext";
 
 export default function Experience() {
   const { lang, t, d } = useLang();
+  const locale = lang === "fr" ? "fr-FR" : "en-GB";
 
-  // Tri du plus récent au plus ancien, comme sur le CV
+  // Most recent first, like the CV. ISO dates sort correctly as plain text.
   const sorted = useMemo(
-    () => [...d.experiences].sort((a, b) => new Date(b.start) - new Date(a.start)),
+    () =>
+      [...d.experiences].sort((a, b) =>
+        (b.start || "").localeCompare(a.start || "")
+      ),
     [d]
   );
 
-  const locale = lang === "fr" ? "fr-FR" : "en-GB";
-  const fmt = (iso) => new Date(iso).toLocaleDateString(locale, { timeZone: "UTC" });
+  // "2024-01-29" -> "29/01/2024". Returns "" if the date is invalid.
+  const fmt = (iso) => {
+    if (!iso) return "";
+    const [y, m, day] = String(iso).split("-").map(Number);
+    if (!y || !m || !day) return "";
+    return new Date(Date.UTC(y, m - 1, day)).toLocaleDateString(locale, {
+      timeZone: "UTC",
+    });
+  };
+
   const formatPeriod = (e) =>
     e.end ? `${fmt(e.start)} – ${fmt(e.end)}` : `${t.since} ${fmt(e.start)}`;
 
